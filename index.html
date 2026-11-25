@@ -1,47 +1,377 @@
 <!DOCTYPE html>
+
 <html lang="ja">
+
 <head>
-    <link rel="stylesheet" href="style.css">
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>マブガル速度計算</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <div class="container">
+
+<div class="container">
 
     <h1>マブガル速度計算</h1>
 
-    <label>キャラクター</label>
-    <select id="character">
-        <option value="">キャラを選択</option>
-    </select>
+    <div class="character-box">
 
-    <label>レベル</label>
-    <input type="number" id="level" value="200" min="1">
+        <h2>キャラ1</h2>
 
-    <label>ギア1</label>
-    <select id="gear1">
-        <option value="">なし</option>
-    </select>
+        <label>キャラクター</label>
 
-    <label>ギア2</label>
-    <select id="gear2">
-        <option value="">なし</option>
-    </select>
+        <select id="character1">
 
-    <label>ギア3</label>
-    <select id="gear3">
-        <option value="">なし</option>
-    </select>
+            <option value="">キャラを選択</option>
 
-    <div class="result-box">
+        </select>
 
-    <h2>計算結果</h2>
+        <label>レベル</label>
 
-    <p id="result">0</p>
+        <input type="number" id="level1" value="200" min="1">
+
+        <label>ギア1</label>
+
+        <select id="gear1-1">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア2</label>
+
+        <select id="gear1-2">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア3</label>
+
+        <select id="gear1-3">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <div class="result-box">
+
+            <h3>速度</h3>
+
+            <p id="result1">0</p>
+
+        </div>
+
+    </div>
+
+    <div class="character-box">
+
+        <h2>キャラ2</h2>
+
+        <label>キャラクター</label>
+
+        <select id="character2">
+
+            <option value="">キャラを選択</option>
+
+        </select>
+
+        <label>レベル</label>
+
+        <input type="number" id="level2" value="200" min="1">
+
+        <label>ギア1</label>
+
+        <select id="gear2-1">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア2</label>
+
+        <select id="gear2-2">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア3</label>
+
+        <select id="gear2-3">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <div class="result-box">
+
+            <h3>速度</h3>
+
+            <p id="result2">0</p>
+
+        </div>
+
+    </div>
+
+    <div class="character-box">
+
+        <h2>キャラ3</h2>
+
+        <label>キャラクター</label>
+
+        <select id="character3">
+
+            <option value="">キャラを選択</option>
+
+        </select>
+
+        <label>レベル</label>
+
+        <input type="number" id="level3" value="200" min="1">
+
+        <label>ギア1</label>
+
+        <select id="gear3-1">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア2</label>
+
+        <select id="gear3-2">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア3</label>
+
+        <select id="gear3-3">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <div class="result-box">
+
+            <h3>速度</h3>
+
+            <p id="result3">0</p>
+
+        </div>
+
+    </div>
+
+    <div class="character-box">
+
+        <h2>キャラ4</h2>
+
+        <label>キャラクター</label>
+
+        <select id="character4">
+
+            <option value="">キャラを選択</option>
+
+        </select>
+
+        <label>レベル</label>
+
+        <input type="number" id="level4" value="200" min="1">
+
+        <label>ギア1</label>
+
+        <select id="gear4-1">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア2</label>
+
+        <select id="gear4-2">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア3</label>
+
+        <select id="gear4-3">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <div class="result-box">
+
+            <h3>速度</h3>
+
+            <p id="result4">0</p>
+
+        </div>
+
+    </div>
+
+    <div class="character-box">
+
+        <h2>キャラ5</h2>
+
+        <label>キャラクター</label>
+
+        <select id="character5">
+
+            <option value="">キャラを選択</option>
+
+        </select>
+
+        <label>レベル</label>
+
+        <input type="number" id="level5" value="200" min="1">
+
+        <label>ギア1</label>
+
+        <select id="gear5-1">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア2</label>
+
+        <select id="gear5-2">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア3</label>
+
+        <select id="gear5-3">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <div class="result-box">
+
+            <h3>速度</h3>
+
+            <p id="result5">0</p>
+
+        </div>
+
+    </div>
+
+    <div class="character-box">
+
+        <h2>キャラ6</h2>
+
+        <label>キャラクター</label>
+
+        <select id="character6">
+
+            <option value="">キャラを選択</option>
+
+        </select>
+
+        <label>レベル</label>
+
+        <input type="number" id="level6" value="200" min="1">
+
+        <label>ギア1</label>
+
+        <select id="gear6-1">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア2</label>
+
+        <select id="gear6-2">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア3</label>
+
+        <select id="gear6-3">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <div class="result-box">
+
+            <h3>速度</h3>
+
+            <p id="result6">0</p>
+
+        </div>
+
+    </div>
+
+    <div class="character-box">
+
+        <h2>キャラ7</h2>
+
+        <label>キャラクター</label>
+
+        <select id="character7">
+
+            <option value="">キャラを選択</option>
+
+        </select>
+
+        <label>レベル</label>
+
+        <input type="number" id="level7" value="200" min="1">
+
+        <label>ギア1</label>
+
+        <select id="gear7-1">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア2</label>
+
+        <select id="gear7-2">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <label>ギア3</label>
+
+        <select id="gear7-3">
+
+            <option value="">なし</option>
+
+        </select>
+
+        <div class="result-box">
+
+            <h3>速度</h3>
+
+            <p id="result7">0</p>
+
+        </div>
+
+    </div>
 
 </div>
 
-</div>
 </body>
+
 </html>
