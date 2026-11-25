@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マブガル速度計算</title>
+</head>
+<body>
+
+    <h1>マブガル速度計算</h1>
+
+    <label>キャラクター</label>
+    <select id="character">
+        <option value="">キャラを選択</option>
+    </select>
+
+    <label>レベル</label>
+    <input type="number" id="level" value="200" min="1">
+
+    <label>ギア1</label>
+    <select id="gear1">
+        <option value="">なし</option>
+    </select>
+
+    <label>ギア2</label>
+    <select id="gear2">
+        <option value="">なし</option>
+    </select>
+
+    <label>ギア3</label>
+    <select id="gear3">
+        <option value="">なし</option>
+    </select>
+
+    <h2>計算結果</h2>
+    <p id="result">0</p>
+
+</body>
+</html>
