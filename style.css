@@ -1,57 +1,135 @@
-
 * {
+
     box-sizing: border-box;
+
 }
 
 body {
+
     font-family: sans-serif;
-    background: #f3f5f8;
+
+    background: #f1f3f6;
+
     color: #222;
+
     margin: 0;
-    padding: 20px;
+
+    padding: 16px;
+
 }
 
 .container {
-    max-width: 500px;
+
+    max-width: 600px;
+
     margin: 0 auto;
-    background: white;
-    padding: 24px;
-    border-radius: 16px;
+
 }
 
 h1 {
+
     text-align: center;
+
     font-size: 24px;
-    margin-bottom: 30px;
+
+    margin-bottom: 24px;
+
+}
+
+.character-box {
+
+    background: white;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+}
+
+.character-box h2 {
+
+    margin-top: 0;
+
+    border-bottom: 1px solid #ddd;
+
+    padding-bottom: 10px;
+
 }
 
 label {
+
     display: block;
+
     font-weight: bold;
-    margin-top: 20px;
+
+    margin-top: 18px;
+
     margin-bottom: 8px;
+
 }
 
 select,
+
 input {
+
     width: 100%;
+
     padding: 14px;
+
     font-size: 16px;
+
     border: 1px solid #ccc;
+
     border-radius: 10px;
+
     background: white;
+
 }
 
 .result-box {
-    margin-top: 30px;
-    padding: 20px;
+
+    margin-top: 24px;
+
+    padding: 16px;
+
     background: #eef4ff;
+
     border-radius: 12px;
+
     text-align: center;
+
 }
 
-#result {
-    font-size: 32px;
+.result-box h3 {
+
+    margin: 0;
+
+    font-size: 16px;
+
+}
+
+#result1,
+
+#result2,
+
+#result3,
+
+#result4,
+
+#result5,
+
+#result6,
+
+#result7 {
+
+    font-size: 30px;
+
     font-weight: bold;
+
     margin: 10px 0 0;
+
 }
