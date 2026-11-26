@@ -287,6 +287,52 @@ const gears = [
         grid.appendChild(card);
 
     }
+    
+       /* ギア選択肢を生成 */
+
+    for (let slot = 1; slot <= 3; slot++) {
+
+        const select = document.getElementById(`gear${i}-${slot}`);
+
+        gears.forEach(gear => {
+
+            const option = document.createElement("option");
+
+            option.value = gear.value;
+
+            option.textContent = `${gear.name} (${gear.value})`;
+
+            select.appendChild(option);
+
+        });
+
+        select.addEventListener("change", () => {
+
+            calculateSpeed(i);
+
+        });
+
+    }
+
+    /* レベル変更時に計算 */
+
+    document.getElementById(`level${i}`).addEventListener("input", () => {
+
+        calculateSpeed(i);
+
+    });
+
+}
+
+/* =========================
+   速度計算
+========================= */
+
+function calculateSpeed(cardNumber) {
+
+    const imageButton = document.getElementById("image" + cardNumber);
+
+    const result = document.getElementById("result" + cardNumber);
 
     /* キャラクター一覧の要素 */
 
