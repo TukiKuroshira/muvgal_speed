@@ -567,6 +567,70 @@
     "clan": 2,
     "attribute": "シャイ",
     "image": "image/ratorowa.webp"
-  }
+  },
   
+  {
+    "name": "ドロテア",
+    "speed": 796,
+    "clan": 3,
+    "attribute": "コミカル",
+    "image": "image/dorotea.webp"
+  },
+  
+  {
+    "name": "リディア",
+    "speed": 780,
+    "clan": 2,
+    "attribute": "コミカル",
+    "image": "image/lydia.webp"
+  },
+  
+  {
+    "name": "桃園める(パイスー)",
+    "speed": 724,
+    "clan": 2,
+    "attribute": "コミカル",
+    "image": "image/meru2.webp"
+  },
+  
+  {
+    "name": "波瀬うるう(水着)",
+    "speed": 750,
+    "clan": 2,
+    "attribute": "コミカル",
+    "image": "image/uruu2.webp"
+  },
+
+  {
+    "name": "榊野ヒイロ",
+    "speed": 786,
+    "clan": 2,
+    "attribute": "クレバー",
+    "image": "image/hiiro.webp"
+  },
+  
+  {
+    "name": "コトハ",
+    "speed": 680,
+    "clan": 2,
+    "attribute": "クレバー",
+    "image": "image/kotoha.webp"
+  },
+  
+  {
+    "name": "オルガ",
+    "speed": 753,
+    "clan": 2,
+    "attribute": "クレバー",
+    "image": "image/olga.webp"
+  },
+  
+  {
+    "name": "ユリア(パイスー)",
+    "speed": 784,
+    "clan": 2,
+    "attribute": "クレバー",
+    "image": "image/julia2.webp"
+  }
+
 ]
