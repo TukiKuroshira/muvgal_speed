@@ -300,6 +300,56 @@ function calculateSpeed(cardNumber) {
 
     const result = document.getElementById("result" + cardNumber);
 
+    if (imageButton.dataset.characterIndex === undefined) {
+
+        result.textContent = "--";
+
+        return;
+
+    }
+
+    const character = characters[
+
+        Number(imageButton.dataset.characterIndex)
+
+    ];
+
+    const level = Number(
+
+        document.getElementById("level" + cardNumber).value
+
+    );
+
+    if (!Number.isFinite(level) || level < 1) {
+
+        result.textContent = "--";
+
+        return;
+
+    }
+
+    let gearTotal = 0;
+
+    for (let slot = 1; slot <= 3; slot++) {
+
+        const select = document.getElementById(`gear${cardNumber}-${slot}`);
+
+        gearTotal += Number(select.value);
+
+    }
+
+    const baseSpeed =
+
+        character.speed +
+
+        (level - 200) * character.clan;
+
+    const speed = baseSpeed * (1 + gearTotal / 100);
+
+    result.textContent = Math.floor(speed);
+
+}
+
     /* キャラクター未選択 */
 
     if (imageButton.dataset.characterIndex === undefined) {
