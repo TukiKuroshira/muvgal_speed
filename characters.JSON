@@ -83,7 +83,7 @@
   {
     "name": "リリー(バンド)",
     "speed": 850,
-    "clan": 2,
+    "clan": 3,
     "attribute": "アグレッシブ",
     "image": "image/lilly2.png"
   },
@@ -271,6 +271,134 @@
     "clan": 2,
     "attribute": "スマート",
     "image": "image/shirona.png"
+  },
+  
+  {
+    "name": "夕凪舞亜",
+    "speed": 632,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/maia.webp"
+  },
+  
+  {
+    "name": "ユリア",
+    "speed": 712,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/yuria.webp"
+  },
+  
+  {
+    "name": "紫雲沙耶",
+    "speed": 802,
+    "clan": 3,
+    "attribute": "スマート",
+    "image": "image/saya.webp"
+  },
+  
+  {
+    "name": "シエナ",
+    "speed": 642,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/siena.webp"
+  },
+  
+  {
+    "name": "リリー",
+    "speed": 785,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/lilly.webp"
+  },
+  
+  {
+    "name": "カリナ",
+    "speed": 651,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/karina.webp"
+  },
+  
+  {
+    "name": "レイヴェル",
+    "speed": 751,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/reivel.webp"
+  },
+  
+  {
+    "name": "ニーナ/ジーナ",
+    "speed": 775,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/nina.webp"
+  },
+  
+  {
+    "name": "月ヶ瀬ちゆる(正月)",
+    "speed": 678,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/chiyuru2.webp"
+  },
+  
+  {
+    "name": "朽葉ラミ(パイスー)",
+    "speed": 717,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/rami2.webp"
+  },
+  
+  {
+    "name": "生駒葵(ドレス)",
+    "speed": 765,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/aoi2.webp"
+  },
+  
+  {
+    "name": "綺羅クララ(クリスマス)",
+    "speed": 685,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/kurara2.webp"
+  },
+  
+  {
+    "name": "フィー(体育)",
+    "speed": 750,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/fee2.webp"
+  },
+  
+  {
+    "name": "リュシー(黒)",
+    "speed": 650,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/lyucy2.webp"
+  },
+  
+  {
+    "name": "ハリエット(賢者)",
+    "speed": 751,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/harriet2.webp"
+  },
+  
+  {
+    "name": "姜小花(水着)",
+    "speed": 631,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/xiaohua2.webp"
   },
   
     {
