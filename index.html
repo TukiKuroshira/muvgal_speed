@@ -481,6 +481,68 @@ for (let i = 1; i <= 8; i++) {
     grid.appendChild(card);
 }
 
+/* ポップアップを開く */
+
+function openModal(cardNumber) {
+
+    activeCard = cardNumber;
+
+    document.getElementById("modalOverlay").classList.add("active");
+
+}
+
+/* ポップアップを閉じる */
+
+function closeModal() {
+
+    document.getElementById("modalOverlay").classList.remove("active");
+
+}
+
+/* キャラクターを選択 */
+
+function selectCharacter(index) {
+
+    if (!activeCard) return;
+
+    const character = characters[index];
+
+    const imageButton = document.getElementById("image" + activeCard);
+
+    imageButton.innerHTML = `
+
+        <img
+
+            src="${character.image}"
+
+            alt="${character.name}"
+
+            style="width:100%;height:100%;object-fit:cover;">
+
+    `;
+
+    imageButton.dataset.characterIndex = index;
+
+    document.getElementById("result" + activeCard).textContent = "--";
+
+    closeModal();
+
+}
+
+/* ポップアップ外を押して閉じる */
+
+document.getElementById("modalOverlay").addEventListener("click", function(event) {
+
+    if (event.target === this) {
+
+        closeModal();
+
+    }
+
+});
+
+
+
 /* ポップアップにキャラクター一覧を作成 */
 
 const characterList = document.getElementById("characterList");
