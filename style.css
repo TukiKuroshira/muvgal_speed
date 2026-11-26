@@ -27,11 +27,12 @@ h1 {
 
 .character-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
     width: 100%;
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
+    align-items: stretch;
 }
 
 .character-card {
@@ -49,9 +50,10 @@ h1 {
 
 .card-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
     min-width: 0;
+    align-items: start;
 }
 
 .left-side {
@@ -329,21 +331,27 @@ input {
 ========================= */
 
 @media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
 
-    h1 {
-        font-size: 22px;
-        margin-bottom: 20px;
+    .character-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+
     }
 
     .character-card {
-        padding: 12px;
+
+        padding: 8px;
+
     }
 
     .card-layout {
-        gap: 10px;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+
     }
 
     .gear-area {
