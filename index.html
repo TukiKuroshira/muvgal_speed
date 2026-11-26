@@ -300,19 +300,69 @@ select {
 <div class="character-grid" id="characterGrid"></div>
 
 <!-- キャラクター選択ポップアップ -->
+
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
+        
+        <!-- ヘッダー -->
         <div class="modal-header">
             <span>キャラクターを選択</span>
-            <button class="close-button" onclick="closeModal()">閉じる</button>
+            <button
+                class="close-button"
+                onclick="closeModal()"
+                type="button">
+                ×
+            </button>
         </div>
 
-        <div class="character-list" id="characterList"></div>
+        <!-- 属性選択 -->
+        <div class="attribute-selector" id="attributeSelector">
+            <button class="attribute-button" data-attribute="アグレッシブ">
 
-        <p class="notice">
-            キャラクター画像一覧から選択する画面
-        </p>
+                アグレッシブ
+
+            </button>
+
+            <button class="attribute-button" data-attribute="スマート">
+
+                スマート
+
+            </button>
+
+            <button class="attribute-button" data-attribute="シャイ">
+
+                シャイ
+
+            </button>
+
+            <button class="attribute-button" data-attribute="キュート">
+
+                キュート
+
+            </button>
+
+            <button class="attribute-button" data-attribute="コミカル">
+
+                コミカル
+
+            </button>
+
+            <button class="attribute-button" data-attribute="クレバー">
+
+                クレバー
+
+            </button>
+
+        </div>
+
+        <!-- キャラクター一覧 -->
+
+        <div class="character-list" id="characterList">
+
+        </div>
+
     </div>
+
 </div>
 
 <script>
