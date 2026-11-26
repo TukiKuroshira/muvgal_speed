@@ -422,7 +422,7 @@
     "speed": 756,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/senka.wabp"
+    "image": "image/senka.webp"
   },
   
   {
@@ -430,7 +430,7 @@
     "speed": 697,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/fee.wabp"
+    "image": "image/fee.webp"
   },
   
   {
@@ -438,7 +438,7 @@
     "speed": 785,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/rosie.wabp"
+    "image": "image/rosie.webp"
   },
   
   {
@@ -446,7 +446,7 @@
     "speed": 740,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/lucy.wabp"
+    "image": "image/lucy.webp"
   },
   
   {
@@ -454,7 +454,7 @@
     "speed": 643,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/tatyana.wabp"
+    "image": "image/tatyana.webp"
   },
   
   {
@@ -462,7 +462,7 @@
     "speed": 755,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/julie2.wabp"
+    "image": "image/julie2.webp"
   },
   
   {
@@ -470,7 +470,7 @@
     "speed": 648,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/meru2.wabp"
+    "image": "image/meru2.webp"
   },
   
   {
@@ -478,7 +478,7 @@
     "speed": 711,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/shirona2.wabp"
+    "image": "image/shirona2.webp"
   },
   
   {
@@ -486,7 +486,7 @@
     "speed": 681,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/nanairo2.wabp"
+    "image": "image/nanairo2.webp"
   },
   
   {
@@ -494,7 +494,7 @@
     "speed": 655,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/julia2.wabp"
+    "image": "image/julia2.webp"
   },
   
   {
@@ -502,7 +502,7 @@
     "speed": 750,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/suiran2.wabp"
+    "image": "image/suiran2.webp"
   },
   
   {
@@ -510,7 +510,7 @@
     "speed": 653,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/anisu2.wabp"
+    "image": "image/anisu2.webp"
   },
   
   {
@@ -518,7 +518,7 @@
     "speed": 745,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/evi2.wabp"
+    "image": "image/evi2.webp"
   },
   
   {
@@ -526,7 +526,7 @@
     "speed": 752,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/shiena2.wabp"
+    "image": "image/shiena2.webp"
   },
   
   {
@@ -534,7 +534,7 @@
     "speed": 858,
     "clan": 3,
     "attribute": "シャイ",
-    "image": "image/lydia2.wabp"
+    "image": "image/lydia2.webp"
   },
   
   {
@@ -542,7 +542,7 @@
     "speed": 800,
     "clan": 3,
     "attribute": "シャイ",
-    "image": "image/olga2.wabp"
+    "image": "image/olga2.webp"
   },
   
   {
@@ -550,7 +550,7 @@
     "speed": 772,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/meiya.wabp"
+    "image": "image/meiya.webp"
   },
   
   {
@@ -558,7 +558,7 @@
     "speed": 677,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/stella.wabp"
+    "image": "image/stella.webp"
   },
   
   {
@@ -566,7 +566,7 @@
     "speed": 752,
     "clan": 2,
     "attribute": "シャイ",
-    "image": "image/ratorowa.wabp"
+    "image": "image/ratorowa.webp"
   }
   
 ]
