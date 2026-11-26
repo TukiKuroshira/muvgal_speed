@@ -143,6 +143,30 @@
     "attribute": "アグレッシブ",
     "image": "image/kotoha2.png"
   },
+  
+  {
+    "name": "エレーナ(温泉)",
+    "speed": 630,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/elena2.webp"
+  },
+  
+  {
+    "name": "珠瀬壬姫",
+    "speed": 770,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/miki.webp"
+  },
+  
+  {
+    "name": "鎧衣美琴",
+    "speed": 830,
+    "clan": 3,
+    "attribute": "アグレッシブ",
+    "image": "image/mikoto.webp"
+  },
 
   {
     "name": "鳴滝七彩",
@@ -263,7 +287,46 @@
     "attribute": "キュート",
     "image": "image/evi2.png"
   },
-
+  
+  {
+    "name": "月ヶ瀬ちゆる(パイスー)",
+    "speed": 754,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/chiyuru2.webp"
+  },
+  
+  {
+    "name": "鑑純夏",
+    "speed": 715,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/sumika.webp"
+  },
+  
+  {
+    "name": "榊千鶴",
+    "speed": 714,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/chizuru.webp"
+  },
+  
+  {
+    "name": "篁唯依",
+    "speed": 716,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/yui.webp"
+  },
+  
+  {
+    "name": "崔亦菲",
+    "speed": 783,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/ifeh.webp"
+  },
 
   {
     "name": "一条白奈",
@@ -376,6 +439,14 @@
     "attribute": "スマート",
     "image": "image/fee2.webp"
   },
+
+    {
+    "name": "フルート(ハロウィン)",
+    "speed": 713,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/flute2.webp"
+  },
   
   {
     "name": "リュシー(黒)",
@@ -399,6 +470,22 @@
     "clan": 2,
     "attribute": "スマート",
     "image": "image/xiaohua2.webp"
+  },
+  
+  {
+    "name": "彩峰慧",
+    "speed": 725,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/kei.webp"
+  },
+  
+  {
+    "name": "タリサ",
+    "speed": 867,
+    "clan": 3,
+    "attribute": "スマート",
+    "image": "image/talisa.webp"
   },
   
     {
