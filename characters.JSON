@@ -152,6 +152,119 @@
     "image": "image/nanairo.png"
   },
 
+{
+    "name": "生駒葵",
+    "speed": 737,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/aoi.png"
+  },
+
+  {
+    "name": "綺羅クララ",
+    "speed": 693,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/kurara.png"
+  },
+
+  {
+    "name": "アニス",
+    "speed": 870,
+    "clan": 3,
+    "attribute": "キュート",
+    "image": "image/anisu.png"
+  },
+
+  {
+    "name": "フルート",
+    "speed": 646,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/flute.png"
+  },
+
+  {
+    "name": "ルナ",
+    "speed": 644,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/luna.png"
+  },
+
+  {
+    "name": "大賀真桜",
+    "speed": 718,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/mao.png"
+  },
+
+  {
+    "name": "ナージャ",
+    "speed": 679,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/naja.png"
+  },
+
+  {
+    "name": "エレーナ",
+    "speed": 652,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/elena.png"
+  },
+
+  {
+    "name": "樋向心香(体育)",
+    "speed": 748,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/shinka2.png"
+  },
+
+  {
+    "name": "朽葉ラミ(正月)",
+    "speed": 717,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/rami2.png"
+  },
+
+  {
+    "name": "ドロテア(黒)",
+    "speed": 679,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/dorotea2.png"
+  },
+
+  {
+    "name": "ケイト(聖騎士)",
+    "speed": 782,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/keito2.png"
+  },
+
+  {
+    "name": "レイラ(ナース)",
+    "speed": 695,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/layla2.png"
+  },
+
+  {
+    "name": "エヴィ(体育)",
+    "speed": 645,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/evi2.png"
+  }
+
+
   {
     "name": "一条白奈",
     "speed": 713,
