@@ -450,73 +450,267 @@ for (let i = 1; i <= 8; i++) {
     grid.appendChild(card);
 }
 
-/* ポップアップにキャラクター一覧を作成 */
+/* キャラクターデータ */
+
+const characters = [
+
+    {
+
+        name: "桃園める",
+
+        speed: 761,
+
+        clan: 2,
+
+        attribute: "アグレッシブ",
+
+        image: "images/meru.png"
+
+    },
+
+    {
+
+        name: "鳴滝七彩",
+
+        speed: 751,
+
+        clan: 2,
+
+        attribute: "キュート",
+
+        image: "images/nanairo.png"
+
+    },
+
+    {
+
+        name: "朽葉ラミ",
+
+        speed: 750,
+
+        clan: 2,
+
+        attribute: "シャイ",
+
+        image: "images/rami.png"
+
+    },
+
+    {
+
+        name: "一条白奈",
+
+        speed: 713,
+
+        clan: 2,
+
+        attribute: "スマート",
+
+        image: "images/shirona.png"
+
+    },
+
+    {
+
+        name: "月ヶ瀬ちゆる",
+
+        speed: 726,
+
+        clan: 2,
+
+        attribute: "シャイ",
+
+        image: "images/chiyuru.png"
+
+    }
+
+];
+
+/* 現在操作中の枠 */
+
+let activeCard = null;
+
+/* キャラクター一覧の要素 */
+
 const characterList = document.getElementById("characterList");
 
-characters.forEach((name, index) => {
+/* 属性ボタン */
 
-    const option = document.createElement("div");
-    option.className = "character-option";
+const attributeButtons = document.querySelectorAll(".attribute-button");
 
-    option.innerHTML = `
-        <div class="character-placeholder">👤</div>
-        <p>${name}</p>
-    `;
+/* 属性選択 */
 
-    option.onclick = () => selectCharacter(index);
+attributeButtons.forEach(button => {
 
-    characterList.appendChild(option);
+    button.onclick = () => {
+
+        const attribute = button.dataset.attribute;
+
+        /* 選択状態を変更 */
+
+        attributeButtons.forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+        button.classList.add("active");
+
+        /* キャラクター一覧を更新 */
+
+        showCharacters(attribute);
+
+    };
+
 });
 
+/* 属性に対応するキャラクターを表示 */
+
+function showCharacters(attribute) {
+
+    characterList.innerHTML = "";
+
+    const filteredCharacters = characters.filter(character => {
+
+        return character.attribute === attribute;
+
+    });
+
+    /* 該当キャラクターがいない場合 */
+
+    if (filteredCharacters.length === 0) {
+
+        characterList.innerHTML = `
+
+            <div class="empty-character-list">
+
+                該当キャラクターがいません
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    /* キャラクター画像を生成 */
+
+    filteredCharacters.forEach(character => {
+
+        const option = document.createElement("div");
+
+        option.className = "character-option";
+
+        option.innerHTML = `
+
+            <div class="character-placeholder">
+
+                <img src="${character.image}" alt="${character.name}">
+
+            </div>
+
+            <p>${character.name}</p>
+
+        `;
+
+        option.onclick = () => {
+
+            selectCharacter(character);
+
+        };
+
+        characterList.appendChild(option);
+
+    });
+
+}
+
 /* ポップアップを開く */
+
 function openModal(cardNumber) {
+
     activeCard = cardNumber;
-    document.getElementById("modalOverlay").classList.add("active");
+
+    document.getElementById("modalOverlay")
+
+        .classList.add("active");
+
+    /* 初期表示はアグレッシブ */
+
+    showCharacters("アグレッシブ");
+
+    /* 初期選択ボタン */
+
+    attributeButtons.forEach(button => {
+
+        button.classList.remove("active");
+
+        if (button.dataset.attribute === "アグレッシブ") {
+
+            button.classList.add("active");
+
+        }
+
+    });
+
 }
 
 /* ポップアップを閉じる */
+
 function closeModal() {
-    document.getElementById("modalOverlay").classList.remove("active");
+
+    document.getElementById("modalOverlay")
+
+        .classList.remove("active");
+
 }
 
 /* キャラクターを選択 */
-function selectCharacter(index) {
+
+function selectCharacter(character) {
 
     if (!activeCard) return;
 
     const imageButton = document.getElementById("image" + activeCard);
 
     imageButton.innerHTML = `
-        <div style="
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            height:100%;
-            width:100%;
-            gap:8px;
-            padding:8px;
-        ">
-            <span style="font-size:32px;">👤</span>
-            <span style="font-size:12px;text-align:center;">
-                ${characters[index]}
-            </span>
-        </div>
+
+        <img
+
+            src="${character.image}"
+
+            alt="${character.name}">
+
     `;
 
-    /* 選択後に速度表示を初期状態にする */
-    document.getElementById("result" + activeCard).textContent = "--";
+    imageButton.dataset.characterName = character.name;
+
+    imageButton.dataset.characterIndex = characters.indexOf(character);
+
+    /* 現段階では速度計算は行わない */
+
+    document.getElementById("result" + activeCard)
+
+        .textContent = "--";
 
     closeModal();
+
 }
 
-/* ポップアップ外を押した場合も閉じる */
-document.getElementById("modalOverlay").addEventListener("click", function(event) {
-    if (event.target === this) {
-        closeModal();
-    }
-});
+/* ポップアップ外を押して閉じる */
 
+document.getElementById("modalOverlay")
+
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeModal();
+
+        }
+
+    });
 </script>
 
 </body>
