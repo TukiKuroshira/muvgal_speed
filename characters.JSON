@@ -416,5 +416,138 @@
     "attribute": "シャイ",
     "image": "image/chiyuru.png"
   }
-
+  
+  {
+    "name": "泉花",
+    "speed": 756,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/senka.wabp"
+  },
+  {
+    "name": "フィー",
+    "speed": 697,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/fee.wabp"
+  },
+  {
+    "name": "ロージー",
+    "speed": 785,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/rosie.wabp"
+  },
+  {
+    "name": "リュシー",
+    "speed": 740,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/lucy.wabp"
+  },
+  {
+    "name": "タチアナ",
+    "speed": 643,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/tatyana.wabp"
+  },
+  {
+    "name": "ジュリー(雪)",
+    "speed": 755,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/julie2.wabp"
+  },
+  {
+    "name": "める(私服)",
+    "speed": 648,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/meru2.wabp"
+  },
+  {
+    "name": "白奈(パイスー)",
+    "speed": 711,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/shirona2.wabp"
+  },
+  {
+    "name": "七彩(パイスー)",
+    "speed": 681,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/nanairo2.wabp"
+  },
+  {
+    "name": "ユリア(温泉)",
+    "speed": 655,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/julia2.wabp"
+  },
+  {
+    "name": "翠蘭(バニー)",
+    "speed": 750,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/suiran2.wabp"
+  },
+  {
+    "name": "アニス(水着)",
+    "speed": 653,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/anisu2.wabp"
+  },
+  {
+    "name": "エヴィ(ハロウィン)",
+    "speed": 745,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/evi2.wabp"
+  },
+  {
+    "name": "シエナ(バンド)",
+    "speed": 752,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/shiena2.wabp"
+  },
+  {
+    "name": "リディア(水着)",
+    "speed": 858,
+    "clan": 3,
+    "attribute": "シャイ",
+    "image": "image/lydia2.wabp"
+  },
+  {
+    "name": "オルガ(温泉)",
+    "speed": 800,
+    "clan": 3,
+    "attribute": "シャイ",
+    "image": "image/olga2.wabp"
+  },
+  {
+    "name": "冥夜",
+    "speed": 772,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/meiya.wabp"
+  },
+  {
+    "name": "ステラ",
+    "speed": 677,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/stella.wabp"
+  },
+  {
+    "name": "ラトロワ",
+    "speed": 752,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/ratorowa.wabp"
+  }
 ]
