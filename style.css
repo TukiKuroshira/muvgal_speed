@@ -1,517 +1,325 @@
+
 * {
-
     box-sizing: border-box;
-
 }
 
 body {
-
     font-family: sans-serif;
-
     background: #f1f3f6;
-
     color: #222;
-
     margin: 0;
-
     padding: 16px;
-
 }
 
 .container {
-
+    width: 100%;
     max-width: 600px;
-
     margin: 0 auto;
-
 }
 
 h1 {
-
     text-align: center;
-
     font-size: 24px;
-
     margin-bottom: 24px;
-
 }
 
-.character-box {
+/* =========================
+   キャラクターカード
+========================= */
 
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.character-card {
+    min-width: 0;
     background: white;
-
-    padding: 20px;
-
-    margin-bottom: 20px;
-
+    padding: 12px;
+    margin-bottom: 12px;
     border-radius: 16px;
-
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-
 }
 
-.character-box h2 {
-
+.character-card h2 {
     margin-top: 0;
-
     border-bottom: 1px solid #ddd;
-
     padding-bottom: 10px;
+}
 
+.card-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+    min-width: 0;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* =========================
+   メイン画面のキャラクター画像
+========================= */
+
+.character-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #ddd;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.character-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================
+   レベル入力
+========================= */
+
+.level-area {
+    width: 100%;
+    min-width: 0;
+}
+
+.level-area label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+}
+
+.level-area input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 10px 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: white;
+}
+
+/* =========================
+   ギア選択
+========================= */
+
+.gear-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    border-left: 1px solid #ddd;
+    padding-left: 10px;
 }
 
 label {
-
     display: block;
-
     font-weight: bold;
-
     margin-top: 18px;
-
     margin-bottom: 8px;
-
 }
 
 select,
-
 input {
-
     width: 100%;
-
-    padding: 14px;
-
+    min-width: 0;
+    padding: 10px 8px;
     font-size: 16px;
-
     border: 1px solid #ccc;
-
     border-radius: 10px;
-
     background: white;
-
 }
 
+/* =========================
+   速度結果
+========================= */
+
 .result-box {
-
-    margin-top: 24px;
-
-    padding: 16px;
-
+    margin-top: 16px;
+    padding: 12px;
     background: #eef4ff;
-
     border-radius: 12px;
-
     text-align: center;
-
 }
 
 .result-box h3 {
-
     margin: 0;
-
     font-size: 16px;
-
 }
 
-#result1,
-
-#result2,
-
-#result3,
-
-#result4,
-
-#result5,
-
-#result6,
-
-#result7 {
-
+.result-box p {
     font-size: 30px;
-
     font-weight: bold;
-
     margin: 10px 0 0;
-
 }
 
-/* 属性選択エリア */
+/* =========================
+   属性選択エリア
+========================= */
 
 .attribute-selector {
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 8px;
-
     margin-bottom: 20px;
-
 }
 
 .attribute-button {
-
     padding: 12px 8px;
-
     border: 1px solid #ccc;
-
     border-radius: 8px;
-
     background: #f5f5f5;
-
     color: #333;
-
     cursor: pointer;
-
     font-weight: bold;
-
     transition: 0.2s;
-
 }
 
 .attribute-button:hover {
-
     background: #e5e5e5;
-
 }
 
 .attribute-button.active {
-
     background: #333;
-
     color: white;
-
     border-color: #333;
-
 }
 
-/* キャラクター一覧 */
+/* =========================
+   ポップアップ
+========================= */
+
+.modal {
+    width: 95%;
+    max-width: 500px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* =========================
+   ポップアップ内キャラクター一覧
+========================= */
 
 .character-list {
-
     display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 12px;
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
 }
 
-/* キャラクター選択カード */
-
 .character-option {
-
+    min-width: 0;
+    padding: 5px;
+    margin: 0;
     text-align: center;
-
     cursor: pointer;
-
     border-radius: 10px;
-
-    padding: 8px;
-
+    overflow: hidden;
     transition: 0.2s;
-
 }
 
 .character-option:hover {
-
     background: #eee;
-
     transform: scale(1.03);
-
 }
 
-/* キャラクター画像 */
-
 .character-placeholder {
-
     width: 100%;
-
-    aspect-ratio: 3 / 4;
-
+    height: 120px;
     overflow: hidden;
-
     border-radius: 8px;
-
     background: #ddd;
-
 }
 
 .character-placeholder img {
-
+    display: block;
     width: 100%;
-
     height: 100%;
-
-    object-fit: cover;
-
+    object-fit: contain;
 }
-
-/* キャラクター名 */
 
 .character-option p {
-
     margin: 6px 0 0;
-
-    font-size: 14px;
-
+    font-size: 12px;
     font-weight: bold;
-
+    overflow-wrap: break-word;
 }
-
-/* 一覧が空の場合 */
 
 .empty-character-list {
-
     grid-column: 1 / -1;
-
     text-align: center;
-
     padding: 30px 10px;
-
     color: #777;
-
 }
 
 /* =========================
-
-   ポップアップ画像サイズ調整
-
+   スマートフォン表示
 ========================= */
 
-.character-list {
-
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: 10px;
-
-}
-
-.character-option {
-
-    min-width: 0;
-
-    padding: 5px;
-
-    overflow: hidden;
-
-}
-
-.character-placeholder {
-
-    width: 100%;
-
-    height: 150px;
-
-    aspect-ratio: auto;
-
-    overflow: hidden;
-
-}
-
-.character-placeholder img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: contain;
-
-}
-
-/* =========================
-
-   メイン画面の画像サイズ調整
-
-========================= */
-
-.character-image {
-
-    overflow: hidden;
-
-    min-width: 0;
-
-}
-
-.character-image img {
-
-    display: block;
-
-    width: 100%;
-
-    height: 100%;
-
-    max-width: 100%;
-
-    object-fit: contain;
-
-}
-
-/* ===== 画像表示の強制調整 ===== */
-
-/* ポップアップ本体 */
-
-.modal {
-
-    width: 95%;
-
-    max-width: 500px;
-
-    max-height: 85vh;
-
-    overflow-y: auto;
-
-}
-
-/* ポップアップ内キャラクター一覧 */
-
-#characterList {
-
-    display: grid !important;
-
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-
-    gap: 8px !important;
-
-    width: 100%;
-
-}
-
-/* キャラクター選択カード */
-
-#characterList .character-option {
-
-    width: 100% !important;
-
-    min-width: 0 !important;
-
-    padding: 4px !important;
-
-    margin: 0 !important;
-
-    transform: none !important;
-
-    overflow: hidden !important;
-
-}
-
-/* ポップアップ内画像枠 */
-
-#characterList .character-placeholder {
-
-    width: 100% !important;
-
-    height: 120px !important;
-
-    aspect-ratio: auto !important;
-
-    overflow: hidden !important;
-
-}
-
-/* ポップアップ内画像 */
-
-#characterList .character-placeholder img {
-
-    display: block !important;
-
-    width: 100% !important;
-
-    height: 100% !important;
-
-    max-width: 100% !important;
-
-    max-height: 100% !important;
-
-    object-fit: contain !important;
-
-}
-
-/* キャラクター名 */
-
-#characterList .character-option p {
-
-    font-size: 12px !important;
-
-    overflow-wrap: break-word;
-
-}
-
-/* メイン画面の画像選択ボタン */
-
-.character-image {
-
-    width: 100% !important;
-
-    min-width: 0 !important;
-
-    overflow: hidden !important;
-
-    padding: 0 !important;
-
-}
-
-/* メイン画面に選択された画像 */
-
-.character-image img {
-
-    display: block !important;
-
-    width: 100% !important;
-
-    height: 100% !important;
-
-    max-width: 100% !important;
-
-    max-height: 100% !important;
-
-    object-fit: contain !important;
-
-}
-
-#modalOverlay {
-
-    background: red !important;
-
-}
-
-#characterList {
-
-    outline: 5px solid lime !important;
-
-}
-
-.character-image {
-
-    background: yellow !important;
-
-}
-
-.character-placeholder {
-
-    width: 100%;
-
-    height: 150px;
-
-    overflow: hidden;
-
-}
-
-.character-placeholder img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: contain;
-
-}
-
-.character-image img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: contain;
-
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+
+    .character-grid {
+        gap: 8px;
+    }
+
+    .character-card {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .card-layout {
+        gap: 8px;
+    }
+
+    .gear-area {
+        padding-left: 8px;
+    }
+
+    .level-area input,
+    select,
+    input {
+        padding: 10px 6px;
+        font-size: 14px;
+    }
+
+    .result-box {
+        padding: 8px;
+    }
+
+    .result-box p {
+        font-size: 24px;
+    }
+
+    .character-list {
+        gap: 8px;
+    }
+
+    .character-placeholder {
+        height: 110px;
+    }
+
+    .character-option {
+        padding: 4px;
+    }
 }
