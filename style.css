@@ -467,3 +467,21 @@ input {
     object-fit: contain !important;
 
 }
+
+#modalOverlay {
+
+    background: red !important;
+
+}
+
+#characterList {
+
+    outline: 5px solid lime !important;
+
+}
+
+.character-image {
+
+    background: yellow !important;
+
+}
