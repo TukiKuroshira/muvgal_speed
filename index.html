@@ -302,7 +302,7 @@ function calculateSpeed(cardNumber) {
 
     /* キャラクター未選択 */
 
-    if (!imageButton.dataset.characterIndex) {
+    if (imageButton.dataset.characterIndex === undefined) {
 
         result.textContent = "--";
 
@@ -326,19 +326,37 @@ function calculateSpeed(cardNumber) {
 
     }
 
-    /* ギア倍率合計 */
+    /* ギア倍率合計（％） */
 
     let gearTotal = 0;
 
     for (let slot = 1; slot <= 3; slot++) {
 
         const gearValue = Number(
+
             document.getElementById(`gear${cardNumber}-${slot}`).value
+
         );
 
         gearTotal += gearValue;
 
     }
+
+    /* レベルによる速度算出 */
+
+    const baseSpeed =
+
+        character.speed +
+
+        (level - 200) * character.clan;
+
+    /* ギアによる百分率加算 */
+
+    const speed = baseSpeed * (1 + gearTotal / 100);
+
+    result.textContent = Math.floor(speed);
+
+}
 
     /* 速度計算 */
 
