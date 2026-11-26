@@ -1,698 +1,450 @@
 <!DOCTYPE html>
+
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>マブガル速度比較</title>
 
-<style>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
 
-* {
-    box-sizing: border-box;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body {
-    margin: 0;
-    padding: 14px;
-    background: #f1f5fb;
-    color: #243247;
-    font-family: sans-serif;
-}
+    <title>マブガル速度比較</title>
 
-h1 {
-    text-align: center;
-    background: #263b56;
-    color: white;
-    border-radius: 12px;
-    padding: 18px 8px;
-    margin: 0 0 18px;
-    font-size: 24px;
-}
+    <!-- 外部CSS -->
 
-/* 8人の比較枠 */
-.character-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-}
+    <link rel="stylesheet" href="style.css">
 
-/* キャラクター枠 */
-.character-card {
-    background: white;
-    border: 1px solid #d5deea;
-    border-radius: 16px;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    min-width: 0;
-}
-
-/* 枠の内部 */
-.card-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 10px;
-}
-
-/* 左側 */
-.left-side {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-width: 0;
-}
-
-/* キャラクター画像 */
-.character-image {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    border: 2px solid #cbd9ed;
-    border-radius: 12px;
-    background: linear-gradient(145deg, #e5edfa, #f7faff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    cursor: pointer;
-    color: #66809e;
-    font-size: 38px;
-}
-
-.character-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.character-image:hover {
-    border-color: #3b82f6;
-}
-
-/* レベル */
-.level-area {
-    width: 100%;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 6px;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 10px 8px;
-    border: 1px solid #ccd6e4;
-    border-radius: 9px;
-    background: white;
-    font-size: 16px;
-    color: #263447;
-}
-
-/* 速度 */
-.result-box {
-    background: #e2edff;
-    border-radius: 12px;
-    padding: 10px 4px;
-    text-align: center;
-}
-
-.result-title {
-    font-weight: bold;
-    color: #2878df;
-    font-size: 14px;
-}
-
-.result-value {
-    font-size: 26px;
-    font-weight: bold;
-    color: #2878df;
-    overflow-wrap: anywhere;
-}
-
-/* 右側のギア */
-.gear-area {
-    border-left: 2px solid #d6deea;
-    padding-left: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-width: 0;
-}
-
-.gear-title {
-    font-weight: bold;
-    font-size: 15px;
-}
-
-.gear-row {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.gear-row label {
-    margin-bottom: 0;
-    font-size: 13px;
-}
-
-/* ポップアップ */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(20, 34, 53, 0.65);
-    z-index: 1000;
-    padding: 16px;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-.modal {
-    background: white;
-    width: 100%;
-    max-width: 600px;
-    max-height: 85vh;
-    overflow-y: auto;
-    border-radius: 18px;
-    padding: 16px;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.close-button {
-    border: none;
-    background: #e8eef7;
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.character-list {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-}
-
-.character-option {
-    border: 2px solid #d5dfed;
-    background: #f3f7fc;
-    border-radius: 12px;
-    padding: 8px;
-    cursor: pointer;
-    text-align: center;
-}
-
-.character-option:hover {
-    border-color: #3b82f6;
-    background: #eaf3ff;
-}
-
-.character-placeholder {
-    aspect-ratio: 3 / 4;
-    background: linear-gradient(145deg, #dce7f6, #f3f7fc);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    color: #69819d;
-}
-
-.character-option p {
-    font-size: 12px;
-    margin: 8px 0 0;
-    overflow-wrap: anywhere;
-}
-
-.notice {
-    text-align: center;
-    font-size: 13px;
-    color: #64748b;
-    margin-top: 14px;
-}
-
-/* スマホ向け */
-@media (max-width: 480px) {
-    body {
-        padding: 8px;
-    }
-
-    h1 {
-        font-size: 19px;
-        padding: 14px 6px;
-    }
-
-    .character-grid {
-        gap: 8px;
-    }
-
-    .character-card {
-        padding: 6px;
-    }
-
-    .card-layout {
-        gap: 6px;
-    }
-
-    .gear-area {
-        padding-left: 6px;
-        gap: 8px;
-    }
-
-    input,
-    select {
-        padding: 8px 4px;
-        font-size: 14px;
-    }
-
-    .result-value {
-        font-size: 21px;
-    }
-
-    .gear-title {
-        font-size: 13px;
-    }
-
-    label {
-        font-size: 12px;
-    }
-}
-</style>
 </head>
 
 <body>
 
-<h1>マブガル速度比較</h1>
+    <h1>マブガル速度比較</h1>
 
-<div class="character-grid" id="characterGrid"></div>
+    <!-- 8人分の比較枠 -->
 
-<!-- キャラクター選択ポップアップ -->
+    <div class="character-grid" id="characterGrid"></div>
 
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-        
-        <!-- ヘッダー -->
-        <div class="modal-header">
-            <span>キャラクターを選択</span>
-            <button
-                class="close-button"
-                onclick="closeModal()"
-                type="button">
-                ×
-            </button>
-        </div>
+    <!-- キャラクター選択ポップアップ -->
 
-        <!-- 属性選択 -->
-        <div class="attribute-selector" id="attributeSelector">
-            <button class="attribute-button" data-attribute="アグレッシブ">
+    <div class="modal-overlay" id="modalOverlay">
 
-                アグレッシブ
+        <div class="modal">
 
-            </button>
+            <!-- ヘッダー -->
 
-            <button class="attribute-button" data-attribute="スマート">
+            <div class="modal-header">
 
-                スマート
+                <span>キャラクターを選択</span>
 
-            </button>
+                <button
 
-            <button class="attribute-button" data-attribute="シャイ">
+                    class="close-button"
 
-                シャイ
+                    onclick="closeModal()"
 
-            </button>
+                    type="button">
 
-            <button class="attribute-button" data-attribute="キュート">
+                    ×
 
-                キュート
+                </button>
 
-            </button>
+            </div>
 
-            <button class="attribute-button" data-attribute="コミカル">
+            <!-- 属性選択 -->
 
-                コミカル
+            <div class="attribute-selector" id="attributeSelector">
 
-            </button>
+                <button class="attribute-button" data-attribute="アグレッシブ" type="button">
 
-            <button class="attribute-button" data-attribute="クレバー">
+                    アグレッシブ
 
-                クレバー
+                </button>
 
-            </button>
+                <button class="attribute-button" data-attribute="スマート" type="button">
 
-        </div>
+                    スマート
 
-        <!-- キャラクター一覧 -->
+                </button>
 
-        <div class="character-list" id="characterList">
+                <button class="attribute-button" data-attribute="シャイ" type="button">
+
+                    シャイ
+
+                </button>
+
+                <button class="attribute-button" data-attribute="キュート" type="button">
+
+                    キュート
+
+                </button>
+
+                <button class="attribute-button" data-attribute="コミカル" type="button">
+
+                    コミカル
+
+                </button>
+
+                <button class="attribute-button" data-attribute="クレバー" type="button">
+
+                    クレバー
+
+                </button>
+
+            </div>
+
+            <!-- キャラクター一覧 -->
+
+            <div class="character-list" id="characterList"></div>
 
         </div>
 
     </div>
 
-</div>
+    <!-- JavaScript -->
 
-<script>
+    <script>
 
-/* キャラクターデータ */
+    /* キャラクターデータ */
 
-const characters = [
+    const characters = [
 
-    {
-        name: "桃園める",
-        speed: 761,
-        clan: 2,
-        attribute: "アグレッシブ",
-        image: "image/meru.png"
-    },
+        {
 
-    {
-        name: "鳴滝七彩",
-        speed: 751,
-        clan: 2,
-        attribute: "キュート",
-        image: "image/nanairo.png"
-    },
+            name: "桃園める",
 
-    {
-        name: "朽葉ラミ",
-        speed: 750,
-        clan: 2,
-        attribute: "シャイ",
-        image: "image/rami.png"
-    },
+            speed: 761,
 
-    {
-        name: "一条白奈",
-        speed: 713,
-        clan: 2,
-        attribute: "スマート",
-        image: "image/shirona.png"
-    },
+            clan: 2,
 
-    {
-        name: "月ヶ瀬ちゆる",
-        speed: 726,
-        clan: 2,
-        attribute: "シャイ",
-        image: "image/chiyuru.png"
+            attribute: "アグレッシブ",
 
-    }
+            image: "image/meru.png"
 
-];
+        },
 
-/* 現在操作中の枠 */
+        {
 
-let activeCard = null;
+            name: "鳴滝七彩",
 
-/* 8人分の枠を作成 */
+            speed: 751,
 
-const grid = document.getElementById("characterGrid");
+            clan: 2,
 
-for (let i = 1; i <= 8; i++) {
+            attribute: "キュート",
 
-    const card = document.createElement("div");
+            image: "image/nanairo.png"
 
-    card.className = "character-card";
+        },
 
-    card.innerHTML = `
+        {
 
-        <div class="card-layout">
+            name: "朽葉ラミ",
 
-            <div class="left-side">
+            speed: 750,
 
-                <button
+            clan: 2,
 
-                    class="character-image"
+            attribute: "シャイ",
 
-                    id="image${i}"
+            image: "image/rami.png"
 
-                    onclick="openModal(${i})"
+        },
 
-                    type="button">
+        {
 
-                    <span>＋</span>
+            name: "一条白奈",
 
-                </button>
+            speed: 713,
 
-                <div class="level-area">
+            clan: 2,
 
-                    <label for="level${i}">レベル</label>
+            attribute: "スマート",
 
-                    <input
+            image: "image/shirona.png"
 
-                        type="number"
+        },
 
-                        id="level${i}"
+        {
 
-                        value="200"
+            name: "月ヶ瀬ちゆる",
 
-                        min="1">
+            speed: 726,
 
-                </div>
+            clan: 2,
 
-                <div class="result-box">
+            attribute: "シャイ",
 
-                    <div class="result-title">最終速度</div>
-
-                    <div class="result-value" id="result${i}">--</div>
-
-                </div>
-
-            </div>
-
-            <div class="gear-area">
-
-                <div class="gear-title">ギア設定</div>
-
-                <div class="gear-row">
-
-                    <label for="gear${i}-1">ギア1</label>
-
-                    <select id="gear${i}-1">
-
-                        <option value="">なし</option>
-
-                    </select>
-
-                </div>
-
-                <div class="gear-row">
-
-                    <label for="gear${i}-2">ギア2</label>
-
-                    <select id="gear${i}-2">
-
-                        <option value="">なし</option>
-
-                    </select>
-
-                </div>
-
-                <div class="gear-row">
-
-                    <label for="gear${i}-3">ギア3</label>
-
-                    <select id="gear${i}-3">
-
-                        <option value="">なし</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
-
-    grid.appendChild(card);
-
-}
-
-/* キャラクター一覧の要素 */
-
-const characterList = document.getElementById("characterList");
-
-/* 属性ボタン */
-
-const attributeButtons = document.querySelectorAll(".attribute-button");
-
-/* 属性選択ボタンの動作 */
-
-attributeButtons.forEach(button => {
-
-    button.onclick = () => {
-
-        const attribute = button.dataset.attribute;
-
-        attributeButtons.forEach(btn => {
-
-            btn.classList.remove("active");
-
-        });
-
-        button.classList.add("active");
-
-        showCharacters(attribute);
-
-    };
-
-});
-
-/* 属性に対応するキャラクターを表示 */
-
-function showCharacters(attribute) {
-
-    characterList.innerHTML = "";
-
-    const filteredCharacters = characters.filter(character => {
-
-        return character.attribute === attribute;
-
-    });
-
-    /* 該当キャラクターがいない場合 */
-
-    if (filteredCharacters.length === 0) {
-
-        characterList.innerHTML = `
-
-            <div class="empty-character-list">
-
-                該当キャラクターがいません
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-    /* キャラクター画像を生成 */
-
-    filteredCharacters.forEach(character => {
-
-        const option = document.createElement("div");
-
-        option.className = "character-option";
-
-        option.innerHTML = `
-
-            <div class="character-placeholder">
-
-                <img src="${character.image}" alt="${character.name}">
-
-            </div>
-
-            <p>${character.name}</p>
-
-        `;
-
-        option.onclick = () => {
-
-            selectCharacter(character);
-
-        };
-
-        characterList.appendChild(option);
-
-    });
-
-}
-
-/* ポップアップを開く */
-
-function openModal(cardNumber) {
-
-    activeCard = cardNumber;
-
-    document.getElementById("modalOverlay")
-
-        .classList.add("active");
-
-    /* 初期属性をアグレッシブにする */
-
-    attributeButtons.forEach(button => {
-
-        button.classList.remove("active");
-
-        if (button.dataset.attribute === "アグレッシブ") {
-
-            button.classList.add("active");
+            image: "image/chiyuru.png"
 
         }
 
+    ];
+
+    /* 現在操作中の枠 */
+
+    let activeCard = null;
+
+    /* 8人分の枠を作成 */
+
+    const grid = document.getElementById("characterGrid");
+
+    for (let i = 1; i <= 8; i++) {
+
+        const card = document.createElement("div");
+
+        card.className = "character-card";
+
+        card.innerHTML = `
+
+            <div class="card-layout">
+
+                <div class="left-side">
+
+                    <button
+
+                        class="character-image"
+
+                        id="image${i}"
+
+                        onclick="openModal(${i})"
+
+                        type="button">
+
+                        <span>＋</span>
+
+                    </button>
+
+                    <div class="level-area">
+
+                        <label for="level${i}">レベル</label>
+
+                        <input
+
+                            type="number"
+
+                            id="level${i}"
+
+                            value="200"
+
+                            min="1">
+
+                    </div>
+
+                    <div class="result-box">
+
+                        <div class="result-title">最終速度</div>
+
+                        <div class="result-value" id="result${i}">--</div>
+
+                    </div>
+
+                </div>
+
+                <div class="gear-area">
+
+                    <div class="gear-title">ギア設定</div>
+
+                    <div class="gear-row">
+
+                        <label for="gear${i}-1">ギア1</label>
+
+                        <select id="gear${i}-1">
+
+                            <option value="">なし</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="gear-row">
+
+                        <label for="gear${i}-2">ギア2</label>
+
+                        <select id="gear${i}-2">
+
+                            <option value="">なし</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="gear-row">
+
+                        <label for="gear${i}-3">ギア3</label>
+
+                        <select id="gear${i}-3">
+
+                            <option value="">なし</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        grid.appendChild(card);
+
+    }
+
+    /* キャラクター一覧の要素 */
+
+    const characterList = document.getElementById("characterList");
+
+    /* 属性ボタン */
+
+    const attributeButtons = document.querySelectorAll(".attribute-button");
+
+    /* 属性選択ボタンの動作 */
+
+    attributeButtons.forEach(button => {
+
+        button.onclick = () => {
+
+            const attribute = button.dataset.attribute;
+
+            attributeButtons.forEach(btn => {
+
+                btn.classList.remove("active");
+
+            });
+
+            button.classList.add("active");
+
+            showCharacters(attribute);
+
+        };
+
     });
 
-    showCharacters("アグレッシブ");
+    /* 属性に対応するキャラクターを表示 */
 
-}
+    function showCharacters(attribute) {
 
-/* ポップアップを閉じる */
+        characterList.innerHTML = "";
 
-function closeModal() {
+        const filteredCharacters = characters.filter(character => {
 
-    document.getElementById("modalOverlay")
+            return character.attribute === attribute;
 
-        .classList.remove("active");
+        });
 
-}
+        /* 該当キャラクターがいない場合 */
 
-/* キャラクターを選択 */
+        if (filteredCharacters.length === 0) {
 
-function selectCharacter(character) {
+            characterList.innerHTML = `
 
-    if (!activeCard) return;
+                <div class="empty-character-list">
 
-    const imageButton = document.getElementById("image" + activeCard);
+                    該当キャラクターがいません
 
-    imageButton.innerHTML = `
+                </div>
 
-        <img
+            `;
 
-            src="${character.image}"
+            return;
 
-            alt="${character.name}">
+        }
 
-    `;
+        /* キャラクター画像を生成 */
 
-    imageButton.dataset.characterName = character.name;
+        filteredCharacters.forEach(character => {
 
-    imageButton.dataset.characterIndex = characters.indexOf(character);
+            const option = document.createElement("div");
 
-    /* 速度計算はまだ実装しない */
+            option.className = "character-option";
 
-    document.getElementById("result" + activeCard)
+            option.innerHTML = `
 
-        .textContent = "--";
+                <div class="character-placeholder">
 
-    closeModal();
+                    <img src="${character.image}" alt="${character.name}">
 
-}
+                </div>
 
-/* ポップアップ外を押して閉じる */
+                <p>${character.name}</p>
 
-document.getElementById("modalOverlay")
+            `;
 
-    .addEventListener("click", function(event) {
+            option.onclick = () => {
+
+                selectCharacter(character);
+
+            };
+
+            characterList.appendChild(option);
+
+        });
+
+    }
+
+    /* ポップアップを開く */
+
+    function openModal(cardNumber) {
+
+        activeCard = cardNumber;
+
+        document.getElementById("modalOverlay").classList.add("active");
+
+        /* 初期属性をアグレッシブにする */
+
+        attributeButtons.forEach(button => {
+
+            button.classList.remove("active");
+
+            if (button.dataset.attribute === "アグレッシブ") {
+
+                button.classList.add("active");
+
+            }
+
+        });
+
+        showCharacters("アグレッシブ");
+
+    }
+
+    /* ポップアップを閉じる */
+
+    function closeModal() {
+
+        document.getElementById("modalOverlay").classList.remove("active");
+
+    }
+
+    /* キャラクターを選択 */
+
+    function selectCharacter(character) {
+
+        if (!activeCard) return;
+
+        const imageButton = document.getElementById("image" + activeCard);
+
+        imageButton.innerHTML = `
+
+            <img src="${character.image}" alt="${character.name}">
+
+        `;
+
+        imageButton.dataset.characterName = character.name;
+
+        imageButton.dataset.characterIndex = characters.indexOf(character);
+
+        /* 速度計算はまだ実装しない */
+
+        document.getElementById("result" + activeCard).textContent = "--";
+
+        closeModal();
+
+    }
+
+    /* ポップアップ外を押して閉じる */
+
+    document.getElementById("modalOverlay").addEventListener("click", function(event) {
 
         if (event.target === this) {
 
@@ -702,7 +454,7 @@ document.getElementById("modalOverlay")
 
     });
 
-</script>
+    </script>
 
 </body>
 
