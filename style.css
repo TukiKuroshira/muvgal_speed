@@ -271,3 +271,77 @@ input {
     color: #777;
 
 }
+
+/* =========================
+
+   ポップアップ画像サイズ調整
+
+========================= */
+
+.character-list {
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+
+}
+
+.character-option {
+
+    min-width: 0;
+
+    padding: 5px;
+
+    overflow: hidden;
+
+}
+
+.character-placeholder {
+
+    width: 100%;
+
+    height: 150px;
+
+    aspect-ratio: auto;
+
+    overflow: hidden;
+
+}
+
+.character-placeholder img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+/* =========================
+
+   メイン画面の画像サイズ調整
+
+========================= */
+
+.character-image {
+
+    overflow: hidden;
+
+    min-width: 0;
+
+}
+
+.character-image img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+}
