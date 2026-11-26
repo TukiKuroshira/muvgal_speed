@@ -345,3 +345,125 @@ input {
     object-fit: contain;
 
 }
+
+/* ===== 画像表示の強制調整 ===== */
+
+/* ポップアップ本体 */
+
+.modal {
+
+    width: 95%;
+
+    max-width: 500px;
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+}
+
+/* ポップアップ内キャラクター一覧 */
+
+#characterList {
+
+    display: grid !important;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 8px !important;
+
+    width: 100%;
+
+}
+
+/* キャラクター選択カード */
+
+#characterList .character-option {
+
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    padding: 4px !important;
+
+    margin: 0 !important;
+
+    transform: none !important;
+
+    overflow: hidden !important;
+
+}
+
+/* ポップアップ内画像枠 */
+
+#characterList .character-placeholder {
+
+    width: 100% !important;
+
+    height: 120px !important;
+
+    aspect-ratio: auto !important;
+
+    overflow: hidden !important;
+
+}
+
+/* ポップアップ内画像 */
+
+#characterList .character-placeholder img {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    max-width: 100% !important;
+
+    max-height: 100% !important;
+
+    object-fit: contain !important;
+
+}
+
+/* キャラクター名 */
+
+#characterList .character-option p {
+
+    font-size: 12px !important;
+
+    overflow-wrap: break-word;
+
+}
+
+/* メイン画面の画像選択ボタン */
+
+.character-image {
+
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    overflow: hidden !important;
+
+    padding: 0 !important;
+
+}
+
+/* メイン画面に選択された画像 */
+
+.character-image img {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    max-width: 100% !important;
+
+    max-height: 100% !important;
+
+    object-fit: contain !important;
+
+}
