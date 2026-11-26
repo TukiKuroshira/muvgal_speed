@@ -106,533 +106,491 @@
   
 /* =========================
 
-   キャラクターデータ
+   キャラクターデータ読み込み
 
 ========================= */
 
-const characters = [
+fetch("characters.JSON")
 
-    {
+    .then(response => {
 
-        name: "桃園める",
+        if (!response.ok) {
 
-        speed: 761,
-
-        clan: 2,
-
-        attribute: "アグレッシブ",
-
-        image: "image/meru.png"
-
-    },
-
-    {
-
-        name: "鳴滝七彩",
-
-        speed: 751,
-
-        clan: 2,
-
-        attribute: "キュート",
-
-        image: "image/nanairo.png"
-
-    },
-
-    {
-
-        name: "朽葉ラミ",
-
-        speed: 750,
-
-        clan: 2,
-
-        attribute: "シャイ",
-
-        image: "image/rami.png"
-
-    },
-
-    {
-
-        name: "一条白奈",
-
-        speed: 713,
-
-        clan: 2,
-
-        attribute: "スマート",
-
-        image: "image/shirona.png"
-
-    },
-
-    {
-
-        name: "月ヶ瀬ちゆる",
-
-        speed: 726,
-
-        clan: 2,
-
-        attribute: "シャイ",
-
-        image: "image/chiyuru.png"
-
-    }
-
-];
-
-/* =========================
-
-   ギアデータ
-
-========================= */
-
-const gears = [
-
-    { name: "ティア1・ランクD", value: 1.00 },
-
-    { name: "ティア1・ランクC", value: 1.50 },
-
-    { name: "ティア1・ランクB", value: 2.25 },
-
-    { name: "ティア1・ランクA", value: 3.00 },
-
-    { name: "ティア1・ランクS", value: 3.60 },
-
-    { name: "ティア2・ランクD", value: 1.50 },
-
-    { name: "ティア2・ランクC", value: 2.62 },
-
-    { name: "ティア2・ランクB", value: 3.37 },
-
-    { name: "ティア2・ランクA", value: 4.49 },
-
-    { name: "ティア2・ランクS", value: 5.40 },
-
-    { name: "ティア3・ランクD", value: 2.00 },
-
-    { name: "ティア3・ランクC", value: 3.50 },
-
-    { name: "ティア3・ランクB", value: 4.50 },
-
-    { name: "ティア3・ランクA", value: 6.00 },
-
-    { name: "ティア3・ランクS", value: 7.19 }
-
-];
-
-/* =========================
-
-   現在操作中の枠
-
-========================= */
-
-let activeCard = null;
-
-/* =========================
-
-   8人分の枠を作成
-
-========================= */
-
-const grid = document.getElementById("characterGrid");
-
-for (let i = 1; i <= 8; i++) {
-
-    const card = document.createElement("div");
-
-    card.className = "character-card";
-
-    card.innerHTML = `
-
-        <div class="card-layout">
-
-            <div class="left-side">
-
-                <button
-
-                    class="character-image"
-
-                    id="image${i}"
-
-                    onclick="openModal(${i})"
-
-                    type="button">
-
-                    <span>＋</span>
-
-                </button>
-
-                <div class="level-area">
-
-                    <label for="level${i}">レベル</label>
-
-                    <input
-
-                        type="number"
-
-                        id="level${i}"
-
-                        value="200"
-
-                        min="1">
-
-                </div>
-
-                <div class="result-box">
-
-                    <div class="result-title">最終速度</div>
-
-                    <div class="result-value" id="result${i}">--</div>
-
-                </div>
-
-            </div>
-
-            <div class="gear-area">
-
-                <div class="gear-title">ギア設定</div>
-
-                <div class="gear-row">
-
-                    <label for="gear${i}-1">ギア1</label>
-
-                    <select id="gear${i}-1">
-
-                        <option value="0">なし</option>
-
-                    </select>
-
-                </div>
-
-                <div class="gear-row">
-
-                    <label for="gear${i}-2">ギア2</label>
-
-                    <select id="gear${i}-2">
-
-                        <option value="0">なし</option>
-
-                    </select>
-
-                </div>
-
-                <div class="gear-row">
-
-                    <label for="gear${i}-3">ギア3</label>
-
-                    <select id="gear${i}-3">
-
-                        <option value="0">なし</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
-
-    grid.appendChild(card);
-
-    /* ギア選択肢を生成 */
-
-    for (let slot = 1; slot <= 3; slot++) {
-
-        const select = document.getElementById(`gear${i}-${slot}`);
-
-        gears.forEach(gear => {
-
-            const option = document.createElement("option");
-
-            option.value = gear.value;
-
-            option.textContent = `${gear.name} (${gear.value}%)`;
-
-            select.appendChild(option);
-
-        });
-
-        select.addEventListener("change", () => {
-
-            calculateSpeed(i);
-
-        });
-
-    }
-
-    /* レベル変更時に計算 */
-
-    document.getElementById(`level${i}`).addEventListener("input", () => {
-
-        calculateSpeed(i);
-
-    });
-
-}
-
-/* =========================
-
-   速度計算
-
-========================= */
-
-function calculateSpeed(cardNumber) {
-
-    const imageButton = document.getElementById("image" + cardNumber);
-
-    const result = document.getElementById("result" + cardNumber);
-
-    /* キャラクター未選択 */
-
-    if (imageButton.dataset.characterIndex === undefined) {
-
-        result.textContent = "--";
-
-        return;
-
-    }
-
-    const character = characters[
-
-        Number(imageButton.dataset.characterIndex)
-
-    ];
-
-    const level = Number(
-
-        document.getElementById("level" + cardNumber).value
-
-    );
-
-    /* 不正なレベル入力 */
-
-    if (!Number.isFinite(level) || level < 1) {
-
-        result.textContent = "--";
-
-        return;
-
-    }
-
-    /* ギア倍率合計 */
-
-    let gearTotal = 0;
-
-    for (let slot = 1; slot <= 3; slot++) {
-
-        const select = document.getElementById(`gear${cardNumber}-${slot}`);
-
-        gearTotal += Number(select.value);
-
-    }
-
-    /* レベルによる速度算出 */
-
-    const baseSpeed =
-
-        character.speed +
-
-        (level - 200) * character.clan;
-
-    /* ギア倍率を百分率として適用 */
-
-    const speed = baseSpeed * (1 + gearTotal / 100);
-
-    result.textContent = Math.floor(speed);
-
-}
-
-/* =========================
-
-   キャラクター一覧
-
-========================= */
-
-const characterList = document.getElementById("characterList");
-
-const attributeButtons = document.querySelectorAll(".attribute-button");
-
-/* 属性選択 */
-
-attributeButtons.forEach(button => {
-
-    button.onclick = () => {
-
-        const attribute = button.dataset.attribute;
-
-        attributeButtons.forEach(btn => {
-
-            btn.classList.remove("active");
-
-        });
-
-        button.classList.add("active");
-
-        showCharacters(attribute);
-
-    };
-
-});
-
-/* =========================
-
-   キャラクター表示
-
-========================= */
-
-function showCharacters(attribute) {
-
-    characterList.innerHTML = "";
-
-    const filteredCharacters = characters.filter(character => {
-
-        return character.attribute === attribute;
-
-    });
-
-    /* 該当なし */
-
-    if (filteredCharacters.length === 0) {
-
-        characterList.innerHTML = `
-
-            <div class="empty-character-list">
-
-                該当キャラクターがいません
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-    /* キャラクター画像・名前 */
-
-    filteredCharacters.forEach(character => {
-
-        const option = document.createElement("div");
-
-        option.className = "character-option";
-
-        option.innerHTML = `
-
-            <div class="character-placeholder">
-
-                <img src="${character.image}" alt="${character.name}">
-
-            </div>
-
-            <p>${character.name}</p>
-
-        `;
-
-        option.onclick = () => {
-
-            selectCharacter(character);
-
-        };
-
-        characterList.appendChild(option);
-
-    });
-
-}
-
-/* =========================
-
-   ポップアップを開く
-
-========================= */
-
-function openModal(cardNumber) {
-
-    activeCard = cardNumber;
-
-    document.getElementById("modalOverlay").classList.add("active");
-
-    /* 初期属性：アグレッシブ */
-
-    attributeButtons.forEach(button => {
-
-        button.classList.remove("active");
-
-        if (button.dataset.attribute === "アグレッシブ") {
-
-            button.classList.add("active");
+            throw new Error("characters.JSONを読み込めませんでした");
 
         }
 
+        return response.json();
+
+    })
+
+    .then(characters => {
+
+        /* =========================
+
+           ギアデータ
+
+        ========================= */
+
+        const gears = [
+
+            { name: "ティア1・ランクD", value: 1.00 },
+
+            { name: "ティア1・ランクC", value: 1.50 },
+
+            { name: "ティア1・ランクB", value: 2.25 },
+
+            { name: "ティア1・ランクA", value: 3.00 },
+
+            { name: "ティア1・ランクS", value: 3.60 },
+
+            { name: "ティア2・ランクD", value: 1.50 },
+
+            { name: "ティア2・ランクC", value: 2.62 },
+
+            { name: "ティア2・ランクB", value: 3.37 },
+
+            { name: "ティア2・ランクA", value: 4.49 },
+
+            { name: "ティア2・ランクS", value: 5.40 },
+
+            { name: "ティア3・ランクD", value: 2.00 },
+
+            { name: "ティア3・ランクC", value: 3.50 },
+
+            { name: "ティア3・ランクB", value: 4.50 },
+
+            { name: "ティア3・ランクA", value: 6.00 },
+
+            { name: "ティア3・ランクS", value: 7.19 }
+
+        ];
+
+        let activeCard = null;
+
+        /* =========================
+
+           8人分の枠を作成
+
+        ========================= */
+
+        const grid = document.getElementById("characterGrid");
+
+        for (let i = 1; i <= 8; i++) {
+
+            const card = document.createElement("div");
+
+            card.className = "character-card";
+
+            card.innerHTML = `
+
+                <div class="card-layout">
+
+                    <div class="left-side">
+
+                        <button
+
+                            class="character-image"
+
+                            id="image${i}"
+
+                            onclick="openModal(${i})"
+
+                            type="button">
+
+                            <span>＋</span>
+
+                        </button>
+
+                        <div class="level-area">
+
+                            <label for="level${i}">レベル</label>
+
+                            <input
+
+                                type="number"
+
+                                id="level${i}"
+
+                                value="200"
+
+                                min="1">
+
+                        </div>
+
+                        <div class="result-box">
+
+                            <div class="result-title">最終速度</div>
+
+                            <div class="result-value" id="result${i}">--</div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="gear-area">
+
+                        <div class="gear-title">ギア設定</div>
+
+                        <div class="gear-row">
+
+                            <label for="gear${i}-1">ギア1</label>
+
+                            <select id="gear${i}-1">
+
+                                <option value="0">なし</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="gear-row">
+
+                            <label for="gear${i}-2">ギア2</label>
+
+                            <select id="gear${i}-2">
+
+                                <option value="0">なし</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="gear-row">
+
+                            <label for="gear${i}-3">ギア3</label>
+
+                            <select id="gear${i}-3">
+
+                                <option value="0">なし</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            grid.appendChild(card);
+
+            /* ギア選択肢を生成 */
+
+            for (let slot = 1; slot <= 3; slot++) {
+
+                const select = document.getElementById(`gear${i}-${slot}`);
+
+                gears.forEach(gear => {
+
+                    const option = document.createElement("option");
+
+                    option.value = gear.value;
+
+                    option.textContent = `${gear.name} (${gear.value}%)`;
+
+                    select.appendChild(option);
+
+                });
+
+                select.addEventListener("change", () => {
+
+                    calculateSpeed(i);
+
+                });
+
+            }
+
+            /* レベル変更時に計算 */
+
+            document.getElementById(`level${i}`).addEventListener("input", () => {
+
+                calculateSpeed(i);
+
+            });
+
+        }
+
+        /* =========================
+
+           速度計算
+
+        ========================= */
+
+        function calculateSpeed(cardNumber) {
+
+            const imageButton = document.getElementById("image" + cardNumber);
+
+            const result = document.getElementById("result" + cardNumber);
+
+            /* キャラクター未選択 */
+
+            if (imageButton.dataset.characterIndex === undefined) {
+
+                result.textContent = "--";
+
+                return;
+
+            }
+
+            const character = characters[
+
+                Number(imageButton.dataset.characterIndex)
+
+            ];
+
+            const level = Number(
+
+                document.getElementById("level" + cardNumber).value
+
+            );
+
+            /* 不正なレベル入力 */
+
+            if (!Number.isFinite(level) || level < 1) {
+
+                result.textContent = "--";
+
+                return;
+
+            }
+
+            /* ギア倍率合計 */
+
+            let gearTotal = 0;
+
+            for (let slot = 1; slot <= 3; slot++) {
+
+                const select = document.getElementById(`gear${cardNumber}-${slot}`);
+
+                gearTotal += Number(select.value);
+
+            }
+
+            /* レベルによる速度算出 */
+
+            const baseSpeed =
+
+                character.speed +
+
+                (level - 200) * character.clan;
+
+            /* ギア倍率を百分率として適用 */
+
+            const speed = baseSpeed * (1 + gearTotal / 100);
+
+            result.textContent = Math.floor(speed);
+
+        }
+
+        /* =========================
+
+           キャラクター一覧
+
+        ========================= */
+
+        const characterList = document.getElementById("characterList");
+
+        const attributeButtons = document.querySelectorAll(".attribute-button");
+
+        /* 属性選択 */
+
+        attributeButtons.forEach(button => {
+
+            button.onclick = () => {
+
+                const attribute = button.dataset.attribute;
+
+                attributeButtons.forEach(btn => {
+
+                    btn.classList.remove("active");
+
+                });
+
+                button.classList.add("active");
+
+                showCharacters(attribute);
+
+            };
+
+        });
+
+        /* =========================
+
+           キャラクター表示
+
+        ========================= */
+
+        function showCharacters(attribute) {
+
+            characterList.innerHTML = "";
+
+            const filteredCharacters = characters.filter(character => {
+
+                return character.attribute === attribute;
+
+            });
+
+            /* 該当なし */
+
+            if (filteredCharacters.length === 0) {
+
+                characterList.innerHTML = `
+
+                    <div class="empty-character-list">
+
+                        該当キャラクターがいません
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+            /* キャラクター画像・名前 */
+
+            filteredCharacters.forEach(character => {
+
+                const option = document.createElement("div");
+
+                option.className = "character-option";
+
+                option.innerHTML = `
+
+                    <div class="character-placeholder">
+
+                        <img src="${character.image}" alt="${character.name}">
+
+                    </div>
+
+                    <p>${character.name}</p>
+
+                `;
+
+                option.onclick = () => {
+
+                    selectCharacter(character);
+
+                };
+
+                characterList.appendChild(option);
+
+            });
+
+        }
+
+        /* =========================
+
+           ポップアップを開く
+
+        ========================= */
+
+        function openModal(cardNumber) {
+
+            activeCard = cardNumber;
+
+            document.getElementById("modalOverlay").classList.add("active");
+
+            /* 初期属性：アグレッシブ */
+
+            attributeButtons.forEach(button => {
+
+                button.classList.remove("active");
+
+                if (button.dataset.attribute === "アグレッシブ") {
+
+                    button.classList.add("active");
+
+                }
+
+            });
+
+            showCharacters("アグレッシブ");
+
+        }
+
+        /* =========================
+
+           ポップアップを閉じる
+
+        ========================= */
+
+        function closeModal() {
+
+            document.getElementById("modalOverlay").classList.remove("active");
+
+        }
+
+        /* HTMLから呼び出せるようにする */
+
+        window.openModal = openModal;
+
+        window.closeModal = closeModal;
+
+        /* =========================
+
+           キャラクター選択
+
+        ========================= */
+
+        function selectCharacter(character) {
+
+            if (!activeCard) return;
+
+            const imageButton = document.getElementById("image" + activeCard);
+
+            imageButton.innerHTML = `
+
+                <img src="${character.image}" alt="${character.name}">
+
+            `;
+
+            imageButton.dataset.characterName = character.name;
+
+            imageButton.dataset.characterIndex = characters.indexOf(character);
+
+            /* 選択直後に速度計算 */
+
+            calculateSpeed(activeCard);
+
+            closeModal();
+
+        }
+
+        /* =========================
+
+           ポップアップ外クリック
+
+        ========================= */
+
+        document.getElementById("modalOverlay").addEventListener("click", function(event) {
+
+            if (event.target === this) {
+
+                closeModal();
+
+            }
+
+        });
+
+        console.log("キャラクターデータ読み込み成功:", characters.length + "人");
+
+    })
+
+    .catch(error => {
+
+        console.error("読み込みエラー:", error);
+
+        document.getElementById("characterGrid").innerHTML = `
+
+            <p>キャラクターデータの読み込みに失敗しました。JSONファイル名や内容を確認してください。</p>
+
+        `;
+
     });
-
-    showCharacters("アグレッシブ");
-
-}
-
-/* =========================
-
-   ポップアップを閉じる
-
-========================= */
-
-function closeModal() {
-
-    document.getElementById("modalOverlay").classList.remove("active");
-
-}
-
-/* =========================
-
-   キャラクター選択
-
-========================= */
-
-function selectCharacter(character) {
-
-    if (!activeCard) return;
-
-    const imageButton = document.getElementById("image" + activeCard);
-
-    imageButton.innerHTML = `
-
-        <img src="${character.image}" alt="${character.name}">
-
-    `;
-
-    imageButton.dataset.characterName = character.name;
-
-    imageButton.dataset.characterIndex = characters.indexOf(character);
-
-    /* 選択直後に速度計算 */
-
-    calculateSpeed(activeCard);
-
-    closeModal();
-
-}
-
-/* =========================
-
-   ポップアップ外クリック
-
-========================= */
-
-document.getElementById("modalOverlay").addEventListener("click", function(event) {
-
-    if (event.target === this) {
-
-        closeModal();
-
-    }
-
-});
 
     </script>
 
