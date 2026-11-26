@@ -1,0 +1,43 @@
+[
+
+  {
+    "name": "桃園める",
+    "speed": 761,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/meru.png"
+  },
+
+  {
+    "name": "鳴滝七彩",
+    "speed": 751,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/nanairo.png"
+  },
+
+  {
+    "name": "朽葉ラミ",
+    "speed": 750,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/rami.png"
+  },
+
+  {
+    "name": "一条白奈",
+    "speed": 713,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/shirona.png"
+  },
+
+  {
+    "name": "月ヶ瀬ちゆる",
+    "speed": 726,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/chiyuru.png"
+  }
+
+]
