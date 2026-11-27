@@ -149,7 +149,7 @@
     "speed": 630,
     "clan": 2,
     "attribute": "アグレッシブ",
-    "image": "image/elena2.webp"
+    "image": "image/elena2.png"
   },
   
   {
@@ -325,7 +325,7 @@
     "speed": 783,
     "clan": 2,
     "attribute": "キュート",
-    "image": "image/ifeh.webp"
+    "image": "image/ifei.webp"
   },
 
   {
@@ -629,7 +629,7 @@
     "speed": 800,
     "clan": 3,
     "attribute": "シャイ",
-    "image": "image/olga2.webp"
+    "image": "image/olga3.webp"
   },
   
   {
