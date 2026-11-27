@@ -436,13 +436,14 @@ function openModal(cardNumber) {
         if (button.dataset.attribute === currentAttribute) {
             button.classList.add("active");
         }
-        window.openModal = openModal;
     });
 
     showCharacters();
 
     characterList.scrollTop = savedScrollTop;
 }
+
+window.openModal = openModal;
 
         /* =========================
              ポップアップを閉じる
