@@ -718,6 +718,36 @@
     "clan": 2,
     "attribute": "クレバー",
     "image": "image/julia3.webp"
+  },
+  
+   {
+    "name": "オルガ＆ナージャ",
+    "speed": 763,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/olga2.webp"
+  },
+  {
+    "name": "オルガ＆ナージャ",
+    "speed": 763,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/olga2.webp"
+  },
+  
+  {
+    "name": "イーニァ＆クリスカ",
+    "speed": 757,
+    "clan": 2,
+    "attribute": "シャイ",
+    "image": "image/inia.webp"
+  },
+  {
+    "name": "イーニァ＆クリスカ",
+    "speed": 757,
+    "clan": 2,
+    "attribute": "スマート",
+    "image": "image/inia.webp"
   }
 
 ]
