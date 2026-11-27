@@ -144,6 +144,7 @@ fetch("characters.JSON")
         let activeCard = null;
         let currentPage = 1;
         let currentAttribute = "アグレッシブ";
+        let savedScrollTop = 0;
 
         const grid = document.getElementById("characterGrid");
         const characterList = document.getElementById("characterList");
@@ -418,40 +419,40 @@ fetch("characters.JSON")
             }
         }
 
+       /* =========================
+   ポップアップを開く
+========================= */
+
+function openModal(cardNumber) {
+
+    activeCard = cardNumber;
+
+    document.getElementById("modalOverlay").classList.add("active");
+
+    attributeButtons.forEach(button => {
+
+        button.classList.remove("active");
+
+        if (button.dataset.attribute === currentAttribute) {
+            button.classList.add("active");
+        }
+    });
+
+    showCharacters();
+
+    characterList.scrollTop = savedScrollTop;
+}
+
         /* =========================
-           ポップアップを開く
+             ポップアップを閉じる
         ========================= */
 
-        function openModal(cardNumber) {
+function closeModal() {
 
-            activeCard = cardNumber;
-            currentPage = 1;
-            currentAttribute = "アグレッシブ";
+    savedScrollTop = characterList.scrollTop;
 
-            document.getElementById("modalOverlay").classList.add("active");
-
-            attributeButtons.forEach(button => {
-
-                button.classList.remove("active");
-
-                if (button.dataset.attribute === currentAttribute) {
-                    button.classList.add("active");
-                }
-            });
-
-            showCharacters();
-        }
-
-        /* =========================
-           ポップアップを閉じる
-        ========================= */
-
-        function closeModal() {
-            document.getElementById("modalOverlay").classList.remove("active");
-        }
-
-        window.openModal = openModal;
-        window.closeModal = closeModal;
+    document.getElementById("modalOverlay").classList.remove("active");
+}
 
         /* =========================
            キャラクター選択
