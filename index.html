@@ -436,6 +436,7 @@ function openModal(cardNumber) {
         if (button.dataset.attribute === currentAttribute) {
             button.classList.add("active");
         }
+        window.openModal = openModal;
     });
 
     showCharacters();
@@ -453,6 +454,8 @@ function closeModal() {
 
     document.getElementById("modalOverlay").classList.remove("active");
 }
+
+window.closeModal = closeModal;
 
         /* =========================
            キャラクター選択
