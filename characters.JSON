@@ -55,15 +55,23 @@
     "attribute": "アグレッシブ",
     "image": "image/noelle2.png"
   },
-
+  
   {
-    "name": "フィー(温泉)",
-    "speed": 712,
+    "name": "黒森ラウラ(サウナ)",
+    "speed": 747,
     "clan": 2,
     "attribute": "アグレッシブ",
-    "image": "image/fee2.png"
+    "image": "image/raura2.png"
   },
-
+  
+  {
+    "name": "夕凪舞亜(ドレス)",
+    "speed": 634,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/maia2.png"
+  },
+  
   {
     "name": "姫川泉花(クリスマス)",
     "speed": 645,
@@ -73,11 +81,43 @@
   },
 
   {
-    "name": "黒森ラウラ(サウナ)",
-    "speed": 747,
+    "name": "フィー(温泉)",
+    "speed": 712,
     "clan": 2,
     "attribute": "アグレッシブ",
-    "image": "image/raura2.png"
+    "image": "image/fee2.png"
+  },
+  
+  {
+    "name": "紫雲沙耶(バニー)",
+    "speed": 777,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/saya2.png"
+  },
+  
+  {
+    "name": "榊野ヒイロ(パイスー)",
+    "speed": 872,
+    "clan": 3,
+    "attribute": "アグレッシブ",
+    "image": "image/hiiro2.png"
+  },
+  
+  {
+    "name": "ロージー(キャンペーン)",
+    "speed": 750,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/rosie2.png"
+  },
+
+  {
+    "name": "ミリアム(魔道士)",
+    "speed": 682,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/miriamu2.png"
   },
 
   {
@@ -89,59 +129,11 @@
   },
 
   {
-    "name": "紫雲沙耶(バニー)",
-    "speed": 777,
-    "clan": 2,
-    "attribute": "アグレッシブ",
-    "image": "image/saya2.png"
-  },
-
-  {
-    "name": "ミリアム(コスプレ)",
-    "speed": 682,
-    "clan": 2,
-    "attribute": "アグレッシブ",
-    "image": "image/miriamu2.png"
-  },
-
-  {
-    "name": "夕凪舞亜(ドレス)",
-    "speed": 634,
-    "clan": 2,
-    "attribute": "アグレッシブ",
-    "image": "image/maia2.png"
-  },
-
-  {
     "name": "大賀真桜(水着)",
     "speed": 749,
     "clan": 2,
     "attribute": "アグレッシブ",
     "image": "image/mao2.png"
-  },
-
-  {
-    "name": "ロージー(キャンペーン)",
-    "speed": 750,
-    "clan": 2,
-    "attribute": "アグレッシブ",
-    "image": "image/rosie2.png"
-  },
-
-  {
-    "name": "榊野ヒイロ(パイスー)",
-    "speed": 872,
-    "clan": 3,
-    "attribute": "アグレッシブ",
-    "image": "image/hiiro2.png"
-  },
-
-  {
-    "name": "コトハ(制服)",
-    "speed": 730,
-    "clan": 2,
-    "attribute": "アグレッシブ",
-    "image": "image/kotoha2.png"
   },
   
   {
@@ -150,6 +142,14 @@
     "clan": 2,
     "attribute": "アグレッシブ",
     "image": "image/elena2.png"
+  },
+
+  {
+    "name": "コトハ(制服)",
+    "speed": 730,
+    "clan": 2,
+    "attribute": "アグレッシブ",
+    "image": "image/kotoha2.png"
   },
   
   {
@@ -255,6 +255,23 @@
     "attribute": "キュート",
     "image": "image/rami2.png"
   },
+  
+  
+  {
+    "name": "月ヶ瀬ちゆる(パイスー)",
+    "speed": 754,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/chiyuru3.webp"
+  },
+  
+  {
+    "name": "エヴィ(体育)",
+    "speed": 645,
+    "clan": 2,
+    "attribute": "キュート",
+    "image": "image/evi2.png"
+  },
 
   {
     "name": "ドロテア(黒)",
@@ -278,22 +295,6 @@
     "clan": 2,
     "attribute": "キュート",
     "image": "image/layla2.png"
-  },
-
-  {
-    "name": "エヴィ(体育)",
-    "speed": 645,
-    "clan": 2,
-    "attribute": "キュート",
-    "image": "image/evi2.png"
-  },
-  
-  {
-    "name": "月ヶ瀬ちゆる(パイスー)",
-    "speed": 754,
-    "clan": 2,
-    "attribute": "キュート",
-    "image": "image/chiyuru2.webp"
   },
   
   {
